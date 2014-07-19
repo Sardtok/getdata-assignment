@@ -1,5 +1,7 @@
 library(reshape2)
 
+print("Getting and cleaning Samsung dataset")
+
 if (!file.exists("UCI HAR Dataset")) {
   if (!file.exists("UCI HAR Dataset.zip")) {
     print("Downloading dataset.")
@@ -92,4 +94,8 @@ write.table(UciHar, "UCI HAR Dataset/tidy.txt", quote=FALSE, sep=",")
 print("Splitting and averaging values")
 UciHar <- dcast(melt(UciHar,id.vars=c("Subject", "Activity"), measure.vars=3:dim(UciHar)[2]),
                 Subject + Activity ~ variable, mean)
-write.table(UciHar, "UCI HAR Dataset/tidy_avg.txt", quote=FALSE, sep=",")
+print("Storing tidy data set after aggregation")
+write.table(UciHar, "UCI HAR Dataset/tidy_averaged.txt", quote=FALSE, sep=",")
+
+# All done
+print("Getting and cleaning Samsung dataset done")
