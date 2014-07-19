@@ -99,10 +99,13 @@ out. Should you be interested in working with the whole dataset, in a
 cleaned up manner, feel free to put them back in.
 
 Then it removes all measurement variables that are not means or
-standard deviations as per the requirements. Then it stores the now
-cleaned up dataset in "UCI&nbsp;HAR&nbsp;Dataset/tidy.txt" as CSV,
-with all the measurements for the mean and standard deviation
-variables.
+standard deviations as per the requirements. Note that, although the
+word mean is in the angle variables, they aren't actually averaged
+data (but angles between averaged vectors), and as such are not kept;
+and although the mean frequencies do not have standard deviations,
+they are kept. Then it stores the now cleaned up dataset in
+"UCI&nbsp;HAR&nbsp;Dataset/tidy.txt" as CSV, with all the measurements
+for the mean and standard deviation variables.
 
 Lastly it reshapes the data, by averaging all values for each variable
 where the subject and activity are the same (i.e. averaging grouped by
