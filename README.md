@@ -74,11 +74,20 @@ The analysis runs in a slightly different order than the one
 prescribed in the assignment.
 
 First it loads the variable names and cleans them up according to the
-naming scheme described below in the code book. Then it loads activity
-labels, and the activities associated with the measurements in both
-the training and testing sets, converting the activity numbers to
-activity labels. Then it loads subject IDs for each measurement in the
-two sets. Then it reads the measurements for both sets.
+naming scheme described in the [code book](CodeBook.md) (this is
+almost entirely based on regular expressions, and could be difficult
+to read if you are not at least somewhat familiar with regex). It
+employs a helper function to move function names (like mean, std,
+etc.) in front of the sensor names (Gyro, Acc, etc.). This is also
+done entirely with regex, but as it was a common pattern in my naming
+scheme, it simplified the work a bit (although it changes the order of
+backreferences).
+
+Then it loads activity labels, and the activities associated with the
+measurements in both the training and testing sets, converting the
+activity numbers to activity labels. Then it loads subject IDs for
+each measurement in the two sets. Then it reads the measurements for
+both sets.
 
 At this point, there are two lines of code commented out, that would
 allow outputting all measurements as a tidy dataset. The full dataset
