@@ -68,3 +68,5 @@ not covered here, but hopefully should be readable. Also see the
 features_info.txt of the original dataset to learn more of the
 variables, which should also indicate the meaning of these additional
 variables, should you choose to insert saving of the full dataset.
+
+See the [README.md#Links](links section of the README).
