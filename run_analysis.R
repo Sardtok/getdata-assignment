@@ -15,7 +15,8 @@ if (!file.exists("UCI HAR Dataset")) {
 
 # Helper function to replace a pattern and move it in front of common measurements
 moveInFrontAndReplace <- function(pattern, replacement, x) {
-  sub(paste("(Acc|Gyro|AccJerk|GyroJerk|gravity)", pattern, sep=""), paste(replacement, "\\1", sep=""), x)
+  sub(paste("((Acc|Gyro|AccJerk|GyroJerk|gravity)((M|m)ag)?)", pattern, sep=""),
+      paste(replacement, "\\1", sep=""), x)
 }
 
 # Clean up names
@@ -30,7 +31,6 @@ names <- gsub("[[:punct:]]", "", names) # Remove punctuation characters
 names <- sub("^AngleBetweent", "AngleBetweenTimeDomain", names) # Fix angle prefix for time domain
 names <- sub("BodyBody", "Body", names) # Remove repeated Body
 
-names <- moveInFrontAndReplace("(M|m)ag", "MagnitudeOf", names) # Place Mag appropriately
 names <- moveInFrontAndReplace("(m|M)ean", "MeanOf", names) # Place mean appropriately
 names <- moveInFrontAndReplace("std", "StandardDeviationOf", names) # Place std appropriately
 names <- moveInFrontAndReplace("mad", "MedianAbsoluteDeviationOf", names) # Place mad appropriately
@@ -39,12 +39,14 @@ names <- moveInFrontAndReplace("max", "Max", names) # Place max appropriately
 names <- moveInFrontAndReplace("min", "Min", names) # Place min appropriately
 names <- moveInFrontAndReplace("sma", "SignalMagnitudeArea", names) # Place sma appropriately
 names <- moveInFrontAndReplace("energy", "EnergyOf", names) # Place energy appropriately
+names <- moveInFrontAndReplace("entropy", "EntropyOf", names) # Place entropy appropriately
 names <- moveInFrontAndReplace("iqr", "InterquartileRangeOf", names) # Place iqr appropriately
 names <- moveInFrontAndReplace("arCoeff", "AutoRegressionCoefficientOf", names) # Place arCoeff appropriately
-names <- moveInFrontAndReplace("corr", "CorrelationOf", names) # Place corr appropriately
+names <- moveInFrontAndReplace("correlation", "CorrelationOf", names) # Place corr appropriately
 names <- moveInFrontAndReplace("Freq", "FrequencyOf", names) # Place Freq appropriately
 names <- moveInFrontAndReplace("skewness", "SkewnessOf", names) # Place skewness appropriately
 names <- moveInFrontAndReplace("kurtosis", "KurtosisOf", names) # Place kurtosis appropriately
+names <- moveInFrontAndReplace("(M|m)ag", "MagnitudeOf", names) # Place Mag appropriately
 
 names <- sub("Acc", "Acceleration", names) # Expand acceleration abbreviation
 names <- sub("gravity", "Gravity", names) # Fix lower-case g in gravity
@@ -80,7 +82,7 @@ UciHar <- cbind(subjects, activities, UciHar)
 
 # If wanted, the data set can be saved as is by uncommenting the following lines
 #print("Storing cleaned up dataset")
-#write.table(UciHar, "UCI HAR Dataset/full_tidy.txt", quote=FALSE, sep=",")
+#write.table(UciHar, "UCI HAR Dataset/tidy_full.txt", quote=FALSE, sep=",")
 
 # Remove columns that aren't means or standard deviations
 print("Removing non-mean and non-standard deviation columns")
