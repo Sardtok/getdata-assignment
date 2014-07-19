@@ -13,7 +13,8 @@ and axis by dots, which should help readability even more.
 
 The two first columns: Subject and Activity, identify the subject
 whose measurements were taken, and which activity they were performing
-when those measurements were taken.
+when those measurements were taken. The subjects are anonymous, and as
+such only a number is used to identify each subject.
 
 There are two domains of interest: the time and frequency domains. The
 domain of a measurement is indicated by the variable starting with
