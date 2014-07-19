@@ -84,14 +84,19 @@ scheme, it simplified the work a bit (although it changes the order of
 backreferences).
 
 Then it loads activity labels, and the activities associated with the
-measurements in both the training and testing sets, converting the
-activity numbers to activity labels. Then it loads subject IDs for
-each measurement in the two sets. Then it reads the measurements for
-both sets.
+measurements in both the training and testing sets (which whenever
+data from these two sets are loaded, they are attached one below the
+other using rbind), converting the activity numbers to activity
+labels. Then it loads subject IDs for each measurement in the two
+sets. Then it reads the measurements for both sets and attaches the
+subject IDs and the labelled activities as the first two columns
+(using cbind).
 
 At this point, there are two lines of code commented out, that would
 allow outputting all measurements as a tidy dataset. The full dataset
-is quite large, and it is recommended to keep the lines commented out.
+is quite large, and it is recommended to keep the lines commented
+out. Should you be interested in working with the whole dataset, in a
+cleaned up manner, feel free to put them back in.
 
 Then it removes all measurement variables that are not means or
 standard deviations as per the requirements. Then it stores the now
