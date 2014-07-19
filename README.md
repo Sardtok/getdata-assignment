@@ -117,7 +117,7 @@ it is currently executing.
 
 ## Links
 
-- [http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones ](The
-study the raw data comes from)
-- [https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip ](The
-  dataset link from the assignment)
+- [The study the raw data comes
+  from](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+- [The dataset link from the
+  assignment](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
